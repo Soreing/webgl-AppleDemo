@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<script id="vertexShader" type="x-shader/x-vertex">
+		attribute vec4 veCoords;
+		attribute vec4 veColors;
+		
+		uniform mat4 transform;
+		
+		varying vec4 frColors;
+
+		void main()
+		{
+			gl_Position = veCoords * transform;
+			frColors = veColors;
+		}
+		</script>
+
+		<script id="fragmentShader" type="x-shader/x-fragment">
+		precision mediump float;
+
+		varying vec4 frColors;
+
+		void main()
+		{
+			gl_FragColor = frColors;
+		}
+		</script>
+
+		<script type="text/javascript" src="../common/webgl-utils.js"></script>
+		<script type="text/javascript" src="../common/initShaders.js"></script>
+		<script type="text/javascript" src="Matrix.js"></script>
+		<script type="text/javascript" src="Arrays.js"></script>
+		<script type="text/javascript" src="Apple.js"></script>
+	</head>
+
+	<body>
+		
+		<canvas id="appleCanvas" width="512" height="512"></canvas>
+	</body>
+</html>
